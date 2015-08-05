@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This software is open source and it is provided as-is without and warranty.
+ * Licence file to be added soon.
  */
 package hiatserver;
 
@@ -18,16 +17,29 @@ import java.util.logging.Logger;
  */
 public class TutorThread implements Runnable {
     
+    /** Thread which executes run */
     private Thread th;
+    /** Socket which connects with the incoming client */
     private Socket socket;
-    private BufferedReader input;
+    /** Defines if the thread should stay alive or stop */
     private boolean alive;
     
+    
+    /**
+     * COnstructor.
+     * Initializes vars
+     * @param s Socket which connected with the incoming client
+     */
     public TutorThread(Socket s) {
         socket = s;
         alive = true;
     }
 
+    
+    /**
+     * Runs the thread.
+     * Creates a reader and keeps reading values sent from the client
+     */
     @Override
     public void run() {
         try {
@@ -47,6 +59,9 @@ public class TutorThread implements Runnable {
     }
     
     
+    /**
+     * Starts the thread
+     */
     public void start ()
     {
         if (th == null)
