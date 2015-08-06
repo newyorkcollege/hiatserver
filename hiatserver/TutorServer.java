@@ -4,14 +4,10 @@
  */
 package hiatserver;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +20,12 @@ public class TutorServer implements Runnable {
     
     /** Thread to execute current run method */
     private Thread th;
+    /** Used to assign serial number to each client */
+    private int counter;
+    
+    public TutorServer() {
+        counter = 0;
+    }
 
     
     /**
@@ -45,11 +47,12 @@ public class TutorServer implements Runnable {
             try {
                 while (true) {
                     Socket socket = listener.accept();
+                    
+                    counter++;
     
-                        
                     System.out.println("Connection received");
 
-                    TutorThread t = new TutorThread(socket);
+                    TutorThread t = new TutorThread(socket, counter);
                     t.start();
                         
                 }
