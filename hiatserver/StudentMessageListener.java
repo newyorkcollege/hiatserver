@@ -5,7 +5,9 @@
 package hiatserver;
 
 /**
- *
+ * Provides the student listener behavior
+ * To be implemented by any class which wants to respond to 
+ * message events coming from a student (client)
  * @author gprok
  */
 public interface StudentMessageListener {

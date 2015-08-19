@@ -5,12 +5,14 @@
 package hiatserver;
 
 /**
- *
+ * Represents a record of a I (interesting) or U (understanding) value
  * @author gprok
  */
 public class NumberRecord {
     
+    /** ID of the client who sent this value */
     private int id;
+    /** Value sent by the client */
     private int value;
 
     public NumberRecord(int id, int value) {
