@@ -23,6 +23,8 @@ public class TutorServer implements Runnable {
     /** Used to assign serial number to each client */
     private int counter;
     
+    private StudentMessageListener studentListener;
+    
     public TutorServer() {
         counter = 0;
     }
@@ -53,6 +55,7 @@ public class TutorServer implements Runnable {
                     System.out.println("Connection received");
 
                     TutorThread t = new TutorThread(socket, counter);
+                    t.setStudentMessageListener(studentListener);
                     t.start();
                         
                 }
@@ -79,4 +82,8 @@ public class TutorServer implements Runnable {
         }
    }
     
+    
+    public void setStudentMessageListener(StudentMessageListener s) {
+        studentListener = s;
+    }
 }

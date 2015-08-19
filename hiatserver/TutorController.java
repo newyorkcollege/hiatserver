@@ -8,7 +8,7 @@ package hiatserver;
  *
  * @author gprok
  */
-public class TutorController {
+public class TutorController implements StudentMessageListener {
     
     /** Server thread reference */
     private TutorServer server;
@@ -18,7 +18,13 @@ public class TutorController {
      */
     public TutorController() {
         server = new TutorServer();
+        server.setStudentMessageListener(this);
         server.start();
+    }
+
+    @Override
+    public void messageReceived(int id, String type, String value) {
+        System.out.println("MSG : " + value);
     }
     
 }

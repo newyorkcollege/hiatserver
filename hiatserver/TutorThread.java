@@ -27,6 +27,8 @@ public class TutorThread implements Runnable {
     /** ID of this client */
     private int id;
     
+    private StudentMessageListener listener;
+    
     
     /**
      * COnstructor.
@@ -57,6 +59,12 @@ public class TutorThread implements Runnable {
                 String answer = "";
                 while((answer = input.readLine()) != null) {
                     System.out.println(answer);
+                    String [] tokens = answer.split("#");
+                    // Verify that we have 3 tokens
+                    if(tokens.length == 3) {
+                        int id = Integer.parseInt(tokens[0]);
+                        listener.messageReceived(id, tokens[1], tokens[2]);
+                    }
                 }
             }
         } catch (IOException ex) {
@@ -78,4 +86,9 @@ public class TutorThread implements Runnable {
            th.start ();
         }
    }
+    
+    
+    public void setStudentMessageListener(StudentMessageListener s) {
+        listener = s;
+    }
 }
