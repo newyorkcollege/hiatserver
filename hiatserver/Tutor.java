@@ -12,6 +12,7 @@ public class Tutor {
     
      public static void main(String [] args) {
         TutorController app = new TutorController();
+      //  TutorView tv = new TutorView();
     }
     
 }

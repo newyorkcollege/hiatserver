@@ -65,6 +65,7 @@ public class TutorThread implements Runnable {
                         int id = Integer.parseInt(tokens[0]);
                         listener.messageReceived(id, tokens[1], tokens[2]);
                     }
+                    
                 }
             }
         } catch (IOException ex) {
